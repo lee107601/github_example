@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub</title>
+
+    <!-- FAVICON -->
+    <link rel="icon" href="./favicon.png">
+
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,300;1,700&display=swap" rel="stylesheet">
+    <!-- 구글폰트에서 폰트 검색하고 크기 장바구니에 넣고 링크 가져옴. -->
+
+    <!-- BOOTSTRAP -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="./main.css">
+
+    
+</head>
+<body>
+
+    <!-- HERO -->
+    <section class="hero">
+
+        <img class="globe" src="./images/hero-globe.jpg" alt="Globe">
+        <img class="glow" src="./images/hero-glow.svg" alt="Glow">
+        <!-- 이미지 삽입 했음-->
+        <!-- 이미지 삽입했는데 이미지가 기존의 구조를 덮어버림 => 헤더를 두개 이미지 밑에 삽입해서 이미지 위에 헤더가 가도록해야함-->
+        <!-- 위에 두 이미지는 포지션값을 가지고 있기때문에 더 위에 쌓일 수 있는 우선권 가짐.-->
+        <!-- 아래 헤더에도 포지션값을 주어야함. -->
+
+        <!-- HEADER -->
+        <!-- 헤더태그 HTML에 이미 있는 태그로서 의미만 있지 기능이 있지는 않음 -> div 써도 되긴함-->
+        <header>
+            <div class="container d-flex align-items-center py-3">
+            <!-- 클래스 이름으로 flex명시(하위요소 수평정렬), 수직방향 센터, py-3(아래위 마진 16px씩)-->
+
+                <!-- a태그 로고 -->
+                <a class="logo me-2" href="#">
+                <!-- logo의 margine end의 2만큼 부여 -->
+                    <img src="./images/header-logo.svg" alt="Github Logo">
+                    <!--svg는 웹에서 사용하는 이미지 포맷, alt는 이미지가 정상적으로 출력되지않았을때 대체 텍스트-->
+                </a>
+
+                <!-- nav ul 태그 -->
+                <ul class="nav flex-grow-1">
+                <!-- 부모 container가 d-flex선언하여 수평정렬되어있을때 그 하위요소에서 flex-grow-비율을 설정하면 비율만큼 최대 늘어남. -->
+                <!-- 최대한 forms(input/버튼창)를 밀어낼것임. -->
+                    <li class="nav-item text-light">
+                    <!-- 위에 글씨 색바꿔도 인식 안됨 => 안되는 이유 : 아래의 a태그들이 각각 색상을 이미 가지고있어서 우선순위는 a태그의 색상에 있음 -->
+                        <a href="#" class="nav-link text-light">Personal</a>
+                        <!-- 글씨색 바꾸는것을 a태그 클래스에 추가해줘야 글씨색 바꿔짐 -->
+                    </li>
+                    <li class="nav-item ">
+                        <a href="#" class="nav-link text-light">Open source</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link text-light">Business</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link text-light">Explore</a>
+                    </li>
+                </ul>
+
+                <div class="forms d-flex"> 
+                <!-- 얘가 포함하는애들을 수평으로 바꿀라면 d-flex-->
+                    <input type="text" class="form-control me-2" placeholder="Search Github">
+                    <!-- 마진 엔드 -2 로 오른쪽 여백 추가 -->
+                    <!-- input요소의 배경 설정은 부트스트랩에 없어서 css활용 -->
+
+                    <button class="btn btn-link text-light flex-shrink-0 me-2 text-decoration-none">Sign in</button>
+                    <!-- btn-link(배경이 없는 버튼 - 밑줄 쳐져잇음) 키워드 추가 -->
+                    <!-- 글자가 2줄되는것 방지 : 감소너비 사용하지 않겠다 flex-shirink-0 -->
+                    <!-- text-decoration-none 밑줄을 사용하지 않겠다. -->
+
+                    <button class="btn btn-outline-light flex-shrink-0">Sign up</button>
+                    <!-- 테두리선라이트인 버튼 -->
+                    <!-- 글자가 2층되는것 방지 : 감소너비 사용하지 않겠다 flex-shirink-0 -->
+                </div>
+                <!-- 같은 컨테이너 안에 얘네 폼애들만 오른쪽으로 옮길순 없음 => 앞에있는 애들 마진을 많이 쓰자 -->
+                
+
+                <!-- 햄버거 아이콘 -->
+                <button class="btn ms-2" data-bs-toggle="offcanvas" data-bs-target="#offcanvas">
+                <!-- 버튼의 마진 스타트앞에 2만큼 옮김, 토글속성: 오프캔버스, 데이터속성 : 아이디선택자로 특정 오프캔버스 아이디값 -->
+                    <img src="./images/menu.svg" alt="Menu Icon">
+                    <!-- 버튼모양을 이미지로 불러옴. -->
+                </button>
+                <!-- 오프캔바스, 오프캔버스 엔드로 오른쪽에서 나타나도록 -->
+                <div class="offcanvas offcanvas-end" id="offcanvas">
+
+                    <!-- 오프캔버스 헤더-->
+                    <div class="offcanvas-header">
+                        <!-- 클로즈 버튼 -->
+                        <button class="btn-close" data-bs-dismiss="offcanvas">
+                        <!-- 부트스트랩의 자바 스크립트가 해석할수있도록 data-bs-dismiss라는 속성에 offcanvas적어줌 -->
+                        </button>
+                    </div>
+
+
+                    <div class="offcanvas-body">
+                        <!-- 리스트그룹, 플러쉬는 바깥쪽 테두리 없앤것. -->
+                        <ul class="list-group list-group-flush mb-4">
+                            <!-- mb-4로 아래쪽에 여백만듬 -->
+                            <li class="list-group-item">
+                                <a href="#">Personal</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="#">Open Source</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="#">Business</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="#">Explore</a>
+                            </li>
+                        </ul>
+
+                        <input type="text" class="form-control mb-2" placeholder="Search Github">
+                        <div class="d-grid mb-2">
+                        <!-- 최대한 늘어나게 해주는 요소 - 버튼은 안늘어나서 d-grid해줘야 최대로 늘어남-->
+                        <!-- mb -2 로 버튼 아래로 가져온다. -->
+                            <button class="btn btn-outline-primary">Sign in</button>
+                        </div>
+                        <div class="d-grid">
+                            <button class="btn btn-primary">Sign up</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7 col-12">
+                <!--부트스트랩 반응형 : 라지 사이즈 이상의 경우엔 7컬럼만 먹겠다 , 그 경우가 아닐경우엔 12컬럼 먹겠다-->
+                    <div class="headline">
+                        <h1 class="text-white">Where the world builds software</h1>
+                        <!-- 하얀색글씨로 -->
+                        <p class="text-white-50">Millions of developers and companies build, ship, and maintain their software on GitHub—the largest and most advanced development platform in the world.</p>
+                        <!-- 50퍼센트 물이빠진 하얀색 -->
+                    </div>
+                </div>
+            </div>
+            <!-- row, col 쓰는 이유는 가로 12구역중 몇구역을 먹을지 선택하기 편하기 때문-->
+            <div class="row">
+                <div class="col-lg-5 col-md-6 col-12">
+                <!-- lg사이즈 이상일땐 5개/ md이상일땐 6개 / 그외엔 12개 -->
+                    <form>
+                        <!--폼에서 입력을 주로 다룸-->
+                        <input type="text" class="form-control form-control-lg mb-3"  placeholder="Email address">  
+                        <!--form-control은 좀 팬시한 입력창, form-control-lg는 사이즈 lg사이즈  magin bottom 3-->
+                        <input type="password" class="form-control form-control-lg mb-3" placeholder="Password">
+                        <div class="d-grid">
+                            <button class="btn btn-primary btn-lg">Sign up for GitHub</button>
+                        </div>
+                        <!-- d-grid 클래스에서 내부에 넣으면 그 내부는 가로로 최대한 늘어남. -->
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <img class="curve" src="./images/curve.svg" alt="Curve">
+        <!-- 커브 이미지 삽입 -->
+
+    </section>
+
+    <!--YOUTUBE-->
+    <section class="youtube">
+        <div class="container">
+            <img class="astronaut" src="./images/hero-astronaut.svg" alt="Astronaut">
+            <div class="ratio ratio-16x9">
+             <!-- 16:9의 영상 -->
+                <iframe src="https://www.youtube.com/embed/lWABP2gSS4U" title="최고민수와 일본 기타큐슈 여행 10시간" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <!-- 위에 기존에 적혀있던 크기는 지워도됨. -->
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="features border-top border-bottom">
+    <!-- border top , bottom으로 위아래 선 부트스트랩이용 -->
+    <!-- 부트스트랩 컨테이너에 선안그은 이유는 선이 안짤리고 쭉 이어져있기 때문. -->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-6">
+                <!-- lg이상일땐 3개, 그 이외엔 6개써서 두칸씩만 먹게됨=> 다른아이템 밑으로 넘어가게됨 -->
+                    <div class="card">
+                        <img src="./images/features-build.png" alt="Build" class="card-img-top">
+                        <div class="card-body text-center">
+                        <!-- 가운데 정렬 -->
+                            <h5 class="card-title"><strong>For everything you build</strong></h5>
+                            <!-- strong은 그 문장 굴게하는 것(부트스트랩) -->
+                            <p class="card-text">Host and manage your code on GitHub. You can keep your work private or share it with the world.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-6">
+                    <div class="card">
+                        <img src="./images/features-work.png" alt="Work" class="card-img-top">
+                        <div class="card-body text-center">
+                            <h5 class="card-title"><strong>A better way to work</strong></h5>
+                            <p class="card-text">From hobbyists to professionals, GitHub helps developers simplify the way they build software.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-6">
+                    <div class="card">
+                        <img src="./images/features-projects.png" alt="Projects" class="card-img-top">
+                        <div class="card-body text-center">
+                            <h5 class="card-title"><strong>Millions of projects</strong></h5>
+                            <p class="card-text">GitHub is home to millions of open source projects. Try one out or get inspired to create your own.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-6">
+                    <div class="card">
+                        <img src="./images/features-platform.png" alt="Platform" class="card-img-top">
+                        <div class="card-body text-center">
+                            <h5 class="card-title"><strong>One platform, from start to finish</strong></h5>
+                            <p class="card-text">With hundreds of integrations, GitHub is flexible enough to be at the center of your development process.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAP -->
+    <section class="map">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-12">
+                <!-- lg이상일때만4, 그 왼 12 -->
+                    <h1>Where is GitHub?</h1>
+                    <p>GitHub is where people build software. More than 18 million people use GitHub to discover, fork, and contribute to over 48 million projects.</p>
+                </div>
+                <div class="col-lg-8 col-12">
+                    <div id="map" class="shadow">
+                    <!-- #map하고 탭키 -->
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3576.4682727362647!2d-122.39309942040764!3d37.78267513336626!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085807f619a62df%3A0x491ce2f73977af35!2sGitHub!5e0!3m2!1sko!2skr!4v1667199132180!5m2!1sko!2skr" style="width: 100%; height: 100%; border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12705.344782919034!2d127.04157981977056!3d37.23973013675522!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357b448f1fa785fd%3A0x2d660aebc184075c!2z6rK96riw64-EIOyImOybkOyLnCDsmIHthrXqtawg66ed7Y-s64-Z!5e0!3m2!1sko!2skr!4v1685953868190!5m2!1sko!2skr" width="100" height="100" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
+    <!-- footer태그는 기능은 없음. 그냥 의미적으로 만 명시할라고 -->
+        <img class="curve" src="./images/curve.svg" alt="Curve">
+
+        <div class="container">
+            <img class="illustration" src="./images/footer-illustration.webp" alt="Illustration">
+            <!-- google에서 만든 이미지포맷 -->
+            <div class="row">
+                <div class="col-lg-4 col-12">
+                    <img class="logo" src="./images/footer-logo.svg" alt="Logo">
+                </div>
+                <div class="col-lg-2 col-md-3 col-6">
+                    <h5>Product</h5>
+                    <ul class="list-unstyled">
+                    <!--ul li 태그의  스타일 제거된다 -> 그앞에 점기호 이런것들 제거됨-->
+                        <li><a href="#">Features</a></li>
+                        <li><a href="#">Security</a></li>
+                        <li><a href="#">Team</a></li>
+                        <li><a href="#">Enterprise</a></li>
+                        <li><a href="#">Customer stories</a></li>
+                        <li><a href="#">The ReadME Project</a></li>
+                        <li><a href="#">Pricing</a></li>
+                        <li><a href="#">Resources</a></li>
+                        <li><a href="#">Roadmap</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-3 col-6">
+                    <h5>Platform</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Developer API</a></li>
+                        <li><a href="#">Partners</a></li>
+                        <li><a href="#">Atom</a></li>
+                        <li><a href="#">Electron</a></li>
+                        <li><a href="#">GitHub Desktop</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-3 col-6">
+                    <h5>Support</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Docs</a></li>
+                        <li><a href="#">Community Forum</a></li>
+                        <li><a href="#">Professional Services</a></li>
+                        <li><a href="#">Learning Lab</a></li>
+                        <li><a href="#">Status</a></li>
+                        <li><a href="#">Contact GitHub</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-3 col-6">
+                    <h5>Company</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press</a></li>
+                        <li><a href="#">DI&B</a></li>
+                        <li><a href="#">Social Impact</a></li>
+                        <li><a href="#">Shop</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 이 영역은 container영역과는 다르게 중앙에 더 밀집되어있음 - flex활용하자 -->
+        <ul class="site-links list-unstyled">
+            <li>© 2021 GitHub, Inc.</li>
+            <li><a href="#">Terms</a></li>
+            <li><a href="#">Privacy</a></li>
+            <li><a href="#">Site Map</a></li>
+            <li><a href="#">What is Git?</a></li>
+        </ul>
+
+    </footer>
+
+</body>
+</html>
